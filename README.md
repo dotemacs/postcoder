@@ -6,6 +6,8 @@ A Clojure client for [UK Postcodes](http://www.uk-postcodes.com/) API, an [ODI](
 
 ## Usage
 
+### Get data for a postcode
+
 ```clojure
 (require '[postcoder.core as postcode])
 (postcode/lookup "SW1A 1AA" "json")
