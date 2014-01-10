@@ -30,6 +30,16 @@ following formats as well: XML, CSV & RDF, like so:
 (postcode/data-at-point "51.5010091744138" "-0.14157319687256223")
 ```
 
+By default it returns data in JSON, but you can get it in any of the
+following formats as well: XML, CSV & RDF, like so:
+
+```clojure
+(postcode/data-at-point "51.5010091744138" "-0.14157319687256223" "json")
+(postcode/data-at-point "51.5010091744138" "-0.14157319687256223" "xml")
+(postcode/data-at-point "51.5010091744138" "-0.14157319687256223" "csv")
+(postcode/data-at-point "51.5010091744138" "-0.14157319687256223" "rdf")
+```
+
 ## License
 
-Released under the [BSD License](http://www.opensource.org/licenses/bsd-license.php).
+Released under the [BSD License](http://www.opensource.org/licenses/bsd-license).
