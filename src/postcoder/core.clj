@@ -41,3 +41,19 @@
         path (string/join "/" [api-server "latlng" point])
         suffix (add-format format)]
     (fetch-data path suffix)))
+
+(defn- sanitize-postcode [postcode]
+  (string/upper-case (string/replace postcode #"\s+" "")))
+
+(defn- set-area-format [format]
+  (if (nil? format)
+    "format=json"
+    (string/join "" ["format=" format])))
+
+(defn area-info [& {:keys [postcode miles format]}]
+  (let [pcode (string/join "=" ["postcode" (sanitize-postcode postcode)])
+        path (string/join "/" [api-server "postcode/nearest"])
+        first-part (string/join "?" [path pcode])
+        with-miles (string/join "=" ["miles" miles])
+        url (string/join "&" [first-part with-miles (set-area-format format)])]
+    (:body @(http/get url))))
